@@ -1,14 +1,36 @@
 
-//for (var i=0; i<)
+var search = document.querySelector("#search");
+search.addEventListener('input', searchCountry);
 
-request(urlAll,selectCountries)
+var region = document.querySelector("#regions");
+region.addEventListener('change', searchRegion);
+
+request(urlAll,selectCountries);
+
 
 function selectCountries(allCountries){
-console.log(allCountries)
-for (var i=0; i<allCountries.lenght;i++){
-    var country=allCountries[i]
-    //addCard(country)
-}
+    for (country of allCountries){
+        addCard(country)
+    }
 }
 
-//selectCountrie()
+
+function searchCountry(event){
+ 
+    clearDOM();
+    request(urlAll, filterCountries);
+    
+    function filterCountries(allCountries){
+        var searchCountries = allCountries.filter(country => country.name.toLowerCase().includes(event.target.value));
+        console.log(event.target.value);
+        console.log(searchCountries);
+        for(country of searchCountries){
+            addCard(country);
+        }
+    }
+}
+
+function searchRegion(event){
+    clearDOM();
+    request(urlAll, filterRegion);
+}

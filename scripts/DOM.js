@@ -1,8 +1,7 @@
-
+var grid = document.querySelector("#flag-grid");
 
 function addCard(country){
-    var grid = document.querySelector("#flag-grid");
-
+    
     var card = document.createElement("div");
     var cardFlag = document.createElement("img");
     var cardInfo = document.createElement("div");
@@ -12,14 +11,10 @@ function addCard(country){
     var capitalCountry = document.createElement("p");
 
     cardFlag.setAttribute("src", country.flag);
-    
-    console.log(country)
-
-
-
-
-
-    //card.classList.add("flex");
+    nameCountry.innerHTML = country.name;
+    populationCountry.innerHTML = country.population;
+    regionCountry.innerHTML = country.region;
+    capitalCountry.innerHTML = country.capital;
 
     grid.appendChild(card);
     card.appendChild(cardFlag);
@@ -28,9 +23,11 @@ function addCard(country){
     cardInfo.appendChild(regionCountry)
     cardInfo.appendChild(capitalCountry)
     card.appendChild(cardInfo);
+}
 
-
-
-    
+function clearDOM(){
+    while(grid.firstChild){
+        grid.removeChild(grid.lastChild);
+    }
 }
 
