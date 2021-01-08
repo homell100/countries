@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="flex justify-between my-6 shadow-md p-6">
+    <h1>Where in the world?</h1>
+    <p id="dark-mode">&#x263e; Dark Mode</p>
+  </header>
+  <main>
+    <section class="flex justify-between m-10">
+      <input id="search" type="text" placeholder="Search for a country" class="shadow-md p-4">
+      <select name="region" id="regions" class="shadow-md p-4">
+        <option value="all" diabled selected hidden> Select region </option>
+        <option value="all">All</option>
+        <option value="africa">Africa</option>
+        <option value="americas">Americas</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+      </select>
+    </section>
+    <section id="flag-grid" class="grid grid-cols-3 m-16 gap-32">
+
+    </section>
+    <section id="modal">
+      <div class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800">
+        <div class="bg-white rounded-lg w-1/2">
+          <div class="flex flex-col items-start p-4">
+            <div class="flex items-center w-full">
+              <svg class="ml-auto fill-current text-gray-700 w-6 h-6 cursor-pointer" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 18 18">
+                <path
+                  d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z" />
+              </svg>
+            </div>
+            <hr>
+            <div class="flex">
+              <div>
+                <img id="img-country" src="" alt="">
+                <p>Border countries <span id="border-countries"></span></p>
+              </div>
+              <div class="flex">
+                <h3 id="name-country"></h3>
+                <div>
+                  <p>Native Name:<span id="native-name"></span></p>
+                  <p>Population:<span id="population"></span></p>
+                  <p>Region:<span id="region"></span></p>
+                  <p>Sub Region:<span id="sub-region"></span></p>
+                  <p>Capital:<span id="capital"></span></p>
+                </div>
+                <div>
+                  <p>Level Domain:<span id="level-domain"></span></p>
+                  <p>Currencies:<span id="currencies"></span></p>
+                  <p>Languages:<span id="languages"></span></p>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="scripts/request.js"></script>
+  <script src="scripts/DOM.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>
