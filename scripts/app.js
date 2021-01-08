@@ -1,36 +1,36 @@
-
-var search = document.querySelector("#search");
-search.addEventListener('input', searchCountry);
-
-var region = document.querySelector("#regions");
-region.addEventListener('change', searchRegion);
-
-request(urlAll,selectCountries);
+request(urlAll,showCountries);
 
 
-function selectCountries(allCountries){
-    for (country of allCountries){
+function showCountries(countries){
+    for (country of countries){
         addCard(country)
     }
 }
 
+var search = document.querySelector("#search");
+search.addEventListener('input', searchCountries);
 
-function searchCountry(event){
- 
+var region = document.querySelector("#regions");
+region.addEventListener('change', searchCountries);
+
+function searchCountries(){
     clearDOM();
-    request(urlAll, filterCountries);
-    
-    function filterCountries(allCountries){
-        var searchCountries = allCountries.filter(country => country.name.toLowerCase().includes(event.target.value));
-        console.log(event.target.value);
-        console.log(searchCountries);
-        for(country of searchCountries){
-            addCard(country);
-        }
-    }
+    request(urlAll, filter);
 }
 
-function searchRegion(event){
-    clearDOM();
-    request(urlAll, filterRegion);
+function filter(allCountries){
+        
+    var searchCountries = allCountries.filter(country => country.name.toLowerCase().includes(search.value.toLowerCase()));
+    var searchRegion =  region.value != "all" ? searchCountries.filter(country => country.region.toLowerCase().includes(region.value)) : searchCountries;
+    showCountries(searchRegion);
 }
+
+var darkMode = document.querySelector("#dark-mode");
+darkMode.addEventListener("mouseover", changePointer)
+darkMode.addEventListener('click', toggleDarkMode)
+
+function changePointer(event){
+    event.target.classList.add("pointer");
+}
+
+

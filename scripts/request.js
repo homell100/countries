@@ -6,7 +6,9 @@ function request(url,cb) {
 
     xml.onreadystatechange = function () {
         if (xml.readyState == 4 && xml.status == 200) {
-            cb(JSON.parse(xml.responseText)) 
+            countriesShown = JSON.parse(xml.responseText);
+            cb(countriesShown); 
+            
         }
     }
     xml.open("GET", url);

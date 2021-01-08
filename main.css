@@ -1,0 +1,8 @@
+.dark-mode{
+    background-color : rgb(32, 44, 55);
+    color: white;
+}
+
+.pointer{
+    cursor: pointer;
+}
