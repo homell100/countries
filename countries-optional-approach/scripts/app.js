@@ -31,7 +31,13 @@ darkMode.addEventListener('click', toggleDarkMode)
 
 function changePointer(event){
     event.target.classList.add("pointer");
-    
+
 }
 
+var closeButton=document.querySelector("#closeButton")
+closeButton.addEventListener('click',closeModal)
 
+
+function closeModal(){
+modal.classList.add('hidden')
+}

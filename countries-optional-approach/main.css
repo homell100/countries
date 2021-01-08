@@ -6,3 +6,8 @@
 .pointer{
     cursor: pointer;
 }
+
+.filter{
+    filter: invert(100%);
+
+}

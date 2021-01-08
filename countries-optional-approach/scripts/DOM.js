@@ -1,5 +1,9 @@
 var grid = document.querySelector("#flag-grid");
 var modal=document.querySelector("#modal")
+var modalSection=document.querySelector("#modal-section")
+var svgButton=document.querySelector("#svg")
+var modalBg=document.querySelector("#modal-bg")
+
 modal.classList.add("hidden")
 function addCard(country){
     var card = document.createElement("div");
@@ -14,9 +18,15 @@ function addCard(country){
     card.setAttribute("id", country.name);
     cardFlag.setAttribute("src", country.flag);
     nameCountry.innerHTML = country.name;
-    populationCountry.innerHTML = country.population;
-    regionCountry.innerHTML = country.region;
-    capitalCountry.innerHTML = country.capital;
+    populationCountry.innerHTML = "<strong>Population: </strong>"+country.population;
+    regionCountry.innerHTML = "<strong>Region: </strong>"+country.region;
+    capitalCountry.innerHTML = "<strong>Capital: </strong>"+country.capital;
+    
+    card.classList.add("h-96")
+    cardInfo.classList.add("shadow-md","p-6","h-1/2")
+    nameCountry.classList.add("text-xl","font-bold","pb-6")
+
+    cardFlag.classList.add("h-1/2","w-full","object-cover")
 
     grid.appendChild(card);
     card.appendChild(cardFlag);
@@ -25,6 +35,7 @@ function addCard(country){
     cardInfo.appendChild(regionCountry);
     cardInfo.appendChild(capitalCountry);
     card.appendChild(cardInfo);
+
 }
 
 function clearDOM(){
@@ -37,6 +48,12 @@ function toggleDarkMode(){
     document.body.classList.toggle("dark-mode");
     search.classList.toggle("dark-mode");
     region.classList.toggle("dark-mode");
+    modalSection.classList.toggle("bg-white")
+    modalSection.classList.toggle("bg-gray-700")
+    modal.classList.toggle("dark-mode");
+    svgButton.classList.toggle("filter")
+    modalBg.classList.toggle('bg-gray-800')
+    
 }
 
 function showModal(event){
@@ -72,24 +89,25 @@ function showModal(event){
         capital.innerHTML=country[0].capital
         levelDomain.innerHTML=country[0].topLevelDomain[0]
         
+        var tempCurrencie=[]
         for(var currencie of country[0].currencies){
-            console.log(currencie)
-            var currencie=","
-            currencies.innerHTML+=currencie.code+str
+            tempCurrencie.push(currencie.code)
         }
+        currencies.innerHTML = tempCurrencie.join(",");
         
+
+        var tempBorder=[]
         for(var borderCountry of country[0].borders){
-            borderCountries.innerHTML+=borderCountry
+            tempBorder.push(borderCountry)
         }
+        borderCountries.innerHTML = tempBorder.join(",");
         
-        //languages=
-
-
+        var tempLanguages=[]
+        for(var language of country[0].languages){
+            tempLanguages.push(language.name)
+        }
+        languages.innerHTML = tempLanguages.join(",");
 
 
     }
-    //Tenim el id
-    //Fem consulta AJAX i busquem pais amb aquest id
-    //Omplim el model dinamicament amb la informació del pais
-    //Mostrem modal
 }
