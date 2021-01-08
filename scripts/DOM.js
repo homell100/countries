@@ -10,21 +10,13 @@ function addCard(country){
     var regionCountry = document.createElement("p");
     var capitalCountry = document.createElement("p");
 
-    // card.addEventListener('click', showModal);
-    // cardInfo.addEventListener('click', showModal);
-    // card.setAttribute("id", country.numericCode);
+    card.addEventListener('click', showModal);
+    card.setAttribute("id", country.name);
     cardFlag.setAttribute("src", country.flag);
     nameCountry.innerHTML = country.name;
     populationCountry.innerHTML = country.population;
     regionCountry.innerHTML = country.region;
     capitalCountry.innerHTML = country.capital;
-
-    cardFlag.setAttribute("data-value", country.numericCode);
-    cardInfo.setAttribute("data-value", country.numericCode);
-    nameCountry.setAttribute("data-value", country.numericCode);
-    populationCountry.setAttribute("data-value", country.numericCode);
-    regionCountry.setAttribute("data-value", country.numericCode);
-    capitalCountry.setAttribute("data-value", country.numericCode);
 
     grid.appendChild(card);
     card.appendChild(cardFlag);
@@ -48,7 +40,7 @@ function toggleDarkMode(){
 }
 
 function showModal(event){
-    console.log(event);
+    console.log(event.currentTarget.id);
     //Tenim el id
     //Fem consulta AJAX i busquem pais amb aquest id
     //Omplim el model dinamicament amb la informació del pais
